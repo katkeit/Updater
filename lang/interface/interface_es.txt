@@ -1,0 +1,15 @@
+[UPDATER]
+001 = Aceptar
+002 = Ayuda
+003 = Hay una nueva actualización disponible. Updater v
+004 = debe ser descargado y extraído.
+005 = Al hacer clic en Aceptar, se abrirá la página de descarga (
+006 = Al hacer clic en Ayuda, aparecerán las páginas del tutorial.
+
+[DOWNLOADER]
+001 = Descargando
+002 = Descarga terminada
+
+[EXTRACTOR]
+001 = Extrayendo
+002 = Terminado de extraer

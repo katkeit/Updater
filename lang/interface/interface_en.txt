@@ -1,0 +1,15 @@
+[UPDATER]
+001 = Okay
+002 = Help
+003 = There is a new update available. Updater v
+004 =  must be downloaded and extracted.
+005 =  Clicking Okay will open the download page (
+006 = Clicking Help will bring up tutorial pages.
+
+[DOWNLOADER]
+001 = Downloading 
+002 = Finished downloading 
+
+[EXTRACTOR]
+001 = Extracting 
+002 = Finished extracting 

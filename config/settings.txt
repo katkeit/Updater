@@ -1,0 +1,18 @@
+[VERSION]
+APP = 1.0.0
+
+[GENERAL]
+ICON = 
+MAIN_APP_PATH =
+MAIN_APP_NAME =
+
+[INTERFACE]
+ENGLISH = lang/interface/interface_en.txt
+SPANISH = lang/interface/interface_es.txt
+PORTUGUESE = lang/interface/interface_pt.txt
+
+[DOWNLOAD]
+FOLDER = download/
+VERSION = version.txt
+UPDATE_ZIP = 
+
