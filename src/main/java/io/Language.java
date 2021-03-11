@@ -34,10 +34,15 @@ import java.util.ArrayList;
 
 public class Language
 {
+    // System messages. Check lang/interface_en.txt.
     private static final ArrayList<String> updaterMessages = new ArrayList<>();
     private static final ArrayList<String> downloaderMessages = new ArrayList<>();
     private static final ArrayList<String> extractorMessages = new ArrayList<>();
 
+    /**
+     * Sets the application's language preference.
+     * @param language The abbreviation of the preferred language (EN, ES, PT).
+     */
     public void setLanguage(String language)
     {
         switch (language) {
@@ -47,10 +52,15 @@ public class Language
         }
     }
 
+    /**
+     * Loads the preferred language file.
+     * @param fileName The name of the file.
+     */
     private void loadLanguage(String fileName)
     {
         try
         {
+            // Wini reads ini files. Check pom.
             Wini ini = new Wini(new File(fileName));
 
             updaterMessages.add(ini.get("UPDATER", "001"));
@@ -69,6 +79,7 @@ public class Language
         }
     }
 
+    // Getters
     public static ArrayList<String> getUpdaterMessages() {
         return updaterMessages;
     }

@@ -32,8 +32,8 @@ import gui.Interface;
 import utility.Downloader;
 import utility.Extractor;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -42,46 +42,60 @@ public class Updater
 {
     public static void main(String[] args)
     {
+        // Read the settings, preferences, and version information.
         FileIO fileIO = new FileIO();
         fileIO.readFile("config/settings.txt");
         fileIO.readFile("config/preferences.txt");
         fileIO.readFile("download/version.txt");
 
+        // Create the graphical user interface.
         Interface gui = new Interface();
         gui.createGUI();
 
+        // Set the user's preferred language.
         Language language = new Language();
         language.setLanguage(FileIO.getPrefLanguage());
 
+        // If the Updater's version doesn't match the Updater's update version from version.txt.
         if (!FileIO.getAppVersion().matches(FileIO.getUpdateVersion()))
         {
+            // The array of options for the JOptionPane set in the user's preferred language.
             String[] options = { Language.getUpdaterMessages().get(0) };
+            // Get the feedback from the user (0 or 1) after setting up the JOptionPane.
             int input = JOptionPane.showOptionDialog(null, Language.getUpdaterMessages().get(2) + FileIO.getUpdateVersion() + " " + Language.getUpdaterMessages().get(3) + "\n" + Language.getUpdaterMessages().get(4) + FileIO.getUpdatePage() + ").", "", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
+            // If user accepts to update the Updater.
             if (input == 0)
                 try
                 {
+                    // If user is on a computer, then get the user's preferred browser.
                     if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE))
+                        // Open the update page in the preferred browser.
                         Desktop.getDesktop().browse(new URI(FileIO.getUpdatePage()));
 
+                    // Safely exit the application - allow the user to update the Updater.
                     Runtime.getRuntime().exit(0);
                 }
                 catch (URISyntaxException | IOException ex) {
                     ex.printStackTrace();
                 }
 
+            // If user refuses to update the application, then exit.
             Runtime.getRuntime().exit(0);
         }
 
         Downloader downloader = new Downloader();
 
+        // If the Updater doesn't need to update, then update the main application by downloading the zip file.
         if (downloader.startDownload(FileIO.getDownloadLink(), FileIO.getUpdateZip()))
         {
             Extractor extractor = new Extractor();
 
+            // Try to successfully unzip the zip and install the update.
             if (extractor.unzipFile(FileIO.getDownloadFolder() + FileIO.getUpdateZip()))
             {
                 try {
+                    // If successful, then launch the main application.
                     Runtime.getRuntime().exec("java -jar " + FileIO.getMainAppPath() + FileIO.getMainAppName());
                 }
                 catch (IOException e) {
@@ -92,6 +106,7 @@ public class Updater
             }
         }
 
+        // Delete the version.txt and the update zip.
         fileIO.deleteFile(FileIO.getDownloadFolder() + FileIO.getUpdateZip());
         fileIO.deleteFile(FileIO.getDownloadFolder() + "version.txt");
     }

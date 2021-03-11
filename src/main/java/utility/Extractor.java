@@ -40,6 +40,11 @@ import java.util.zip.ZipFile;
 
 public class Extractor
 {
+    /**
+     * Unzips a zip file in the main application's directory.
+     * @param fileName The name of the zip file.
+     * @return Return true or false depending on the success of unzipping the file.
+     */
     public boolean unzipFile(String fileName)
     {
         try

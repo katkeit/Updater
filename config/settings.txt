@@ -1,5 +1,5 @@
 [VERSION]
-APP = 1.0.0
+APP = 0.1
 
 [GENERAL]
 ICON = 

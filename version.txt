@@ -1,0 +1,7 @@
+[MAIN APP]
+VERSION =
+DOWNLOAD =
+
+[UPDATER]
+VERSION = 0.1
+PAGE = https://github.com/katkeit/Updater/releases

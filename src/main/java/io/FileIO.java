@@ -48,6 +48,10 @@ public class FileIO
     private static String updateVersion;
     private static String updatePage;
 
+    /**
+     * Reads configuration files (settings, preferences, and version).
+     * @param fileName The name of the file.
+     */
     public void readFile(String fileName)
     {
         if (fileName.contains("settings"))
@@ -58,20 +62,31 @@ public class FileIO
             loadVersion(fileName);
     }
 
+    /**
+     * Deletes a file from name or absolute file path.
+     * @param fileName The name of the file.
+     */
     public void deleteFile(String fileName)
     {
         File file = new File(fileName);
 
+        // Continuously try to delete the file until the operation completes.
             do {
+                // If the files deletes, then break from loop.
                 if(file.delete())
                     break;
-            } while(!file.delete());
+            } while(!file.delete()); // If the file doesn't delete, then try again.
     }
 
+    /**
+     * Load the settings.
+     * @param fileName The name of the file (settings.txt).
+     */
     private void loadSettings(String fileName)
     {
         try
         {
+            // Wini reads ini files. Check pom.
             this.ini = new Wini(new File(fileName));
 
             appVersion = this.ini.get("VERSION", "APP");
@@ -89,10 +104,15 @@ public class FileIO
         }
     }
 
+    /**
+     * Load the preferences.
+     * @param fileName The name of the file (preferences.txt).
+     */
     private void loadPreferences(String fileName)
     {
         try
         {
+            // Wini reads ini files. Check pom.
             this.ini = new Wini(new File(fileName));
             prefLanguage = this.ini.get("PREFERENCES", "LANGUAGE");
         }
@@ -101,13 +121,18 @@ public class FileIO
         }
     }
 
+    /**
+     * Load the version.
+     * @param fileName The name of the file (version.txt).
+     */
     private void loadVersion(String fileName)
     {
         try
         {
+            // Wini reads ini files. Check pom.
             this.ini = new Wini(new File(fileName));
 
-            downloadLink = this.ini.get("CALCULATOR", "DOWNLOAD");
+            downloadLink = this.ini.get("MAIN APP", "DOWNLOAD");
             updateVersion = this.ini.get("UPDATER", "VERSION");
             updatePage = this.ini.get("UPDATER", "PAGE");
         }
@@ -116,6 +141,7 @@ public class FileIO
         }
     }
 
+    // Getters
     public static String getAppVersion() {
         return appVersion;
     }

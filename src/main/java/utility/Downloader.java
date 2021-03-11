@@ -38,16 +38,28 @@ import java.nio.channels.ReadableByteChannel;
 
 public class Downloader
 {
+    /**
+     * Downloads the file from a certain url.
+     * @param url The URL link.
+     * @param fileName The name of the file.
+     * @return Return true or false depending on the success of the download.
+     */
     public boolean startDownload(String url, String fileName)
     {
         try
         {
+            // Change the interface text to show what is being downloaded.
             Interface.getLabel().setText(Language.getDownloaderMessages().get(0) + fileName + "...");
+            // Create a byte channel to open and being downloading the file via URL.
             ReadableByteChannel readChannel = Channels.newChannel((new URL(url)).openStream());
+            // Create output stream to store the data.
             FileOutputStream fileOS = new FileOutputStream(FileIO.getDownloadFolder() + fileName);
+            // Transfer the byte channel's data into the output stream's file.
             fileOS.getChannel().transferFrom(readChannel, 0L, Long.MAX_VALUE);
+            // Close the output stream.
             fileOS.close();
 
+            // Update interface to say the download was successful.
             Interface.getLabel().setText(Language.getDownloaderMessages().get(1) + fileName + "...");
             return true;
         }
