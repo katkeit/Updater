@@ -101,8 +101,6 @@ public class Updater
                 catch (IOException e) {
                     e.printStackTrace();
                 }
-
-                Runtime.getRuntime().exit(0);
             }
         }
 
