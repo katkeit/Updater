@@ -16,14 +16,14 @@
     - Add the name of the UPDATE_ZIP
     - Can edit the name of the VERSION file.
 4) Change the version.txt file.
-   - Update the VERSION under MAIN APP section.
-   - Update the DOWNLOAD link under MAIN APP section.
+   -  Update the VERSION under MAIN APP section.
+   -  Update the DOWNLOAD link under MAIN APP section.
 5) Upload the version.txt.
-   - The main application will download version.txt in the Updater's download folder. If application needs to update, then launch updater.jar.
-   - The Updater will delete the file after updating the main application.
+   -  The main application will download version.txt in the Updater's download folder. If application needs to update, then launch updater.jar.
+   -  The Updater will delete the file after updating the main application.
 6) Compile the project.
 
 ## ❈ Features
-- Supports three (3) languages (English, Español, and Português).
-- Downloads and extracts zip files.
-- Restarts the main application (.jar files) after updating.
+-  Supports three (3) languages (English, Español, and Português).
+-  Downloads and extracts zip files.
+-  Restarts the main application (.jar files) after updating.

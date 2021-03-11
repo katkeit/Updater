@@ -102,7 +102,7 @@ public class Updater
                     e.printStackTrace();
                 }
 
-                System.exit(0);
+                Runtime.getRuntime().exit(0);
             }
         }
 

@@ -70,7 +70,7 @@ public class FileIO
     {
         File file = new File(fileName);
 
-        // Continuously try to delete the file until the operation completes.
+            // Continuously try to delete the file until the operation completes.
             do {
                 // If the files deletes, then break from loop.
                 if(file.delete())
